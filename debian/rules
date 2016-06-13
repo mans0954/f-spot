@@ -52,8 +52,11 @@ get-orig-source:
 		--rename \
 		--destdir .
 
-#Disable autoreconf for now
+override_dh_autoreconf:
+	dh_autoreconf ./autogen.sh
+
+
 %:
-	dh $@ --verbose --with quilt,cli
+	dh $@ --verbose --with quilt,cli,autoreconf
 
 .PHONY: get-orig-source

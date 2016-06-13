@@ -1,0 +1,10 @@
+--- a/lib/libfspot/Makefile.am
++++ b/lib/libfspot/Makefile.am
+@@ -19,6 +19,7 @@
+ 
+ libfspot_la_LIBADD = 					\
+ 	-lX11						\
++	-lm						\
+ 	$(F_LIBS)					\
+ 	$(LCMS_LIBS)					\
+ 	$(GIO_LIBS)
