@@ -1,3 +1,4 @@
+prerelease.patch
 autogen.patch
 link-libfspot-with-needed-libm.patch
 fixes.patch

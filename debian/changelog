@@ -3,6 +3,7 @@ f-spot (0.9.0~21-1) UNRELEASED; urgency=medium
   * Switch to building from upstream.
   * Switch to dpkg-source 3.0 (quilt) format
   * Refresh patches
+  * Patch to set pre-release version
 
  -- Christopher Hoskin <christopher.hoskin@gmail.com>  Mon, 13 Jun 2016 20:19:40 +0100
 

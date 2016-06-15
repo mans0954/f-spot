@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -5,7 +5,7 @@
+ m4_define([fspot_version_micro], [0])
+ 
+ dnl set to 0 when doing an official release
+-m4_define([fspot_version_pre_release], [0])
++m4_define([fspot_version_pre_release], [21])
+ 
+ m4_define([concat], $1$2$3$4)
+ 
