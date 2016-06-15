@@ -1,12 +1,11 @@
 --- a/autogen.sh
 +++ b/autogen.sh
-@@ -61,9 +61,7 @@
+@@ -61,8 +61,6 @@
  check_autotool_version intltoolize 0.35.0
  check_autotool_version pkg-config 0.14.0
  
- run git submodule sync
+-run git submodule sync
 -run git submodule update --init
--
+ 
  if [ $(pkg-config --modversion gnome-doc-utils 2> /dev/null) ]; then
      run gnome-doc-prepare --automake --force
- else

@@ -1,7 +1,7 @@
+autogen.patch
 link-libfspot-with-needed-libm.patch
 fixes.patch
 0001-ubuntu_xdg-photo-dir.patch
 #0002-PixbufLoader-from-gtk-sharp-master-does-not-have-a-C.patch
-autogen.patch
 #0003-link-libfspot-with-needed-libm.patch
 0004-Fix-build-error-with-recent_gtk-sharp.patch

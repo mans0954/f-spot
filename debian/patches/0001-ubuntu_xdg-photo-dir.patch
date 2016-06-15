@@ -14,7 +14,7 @@ Subject: ubuntu_xdg-photo-dir
 
 --- a/src/Clients/MainApp/FSpot/Preferences.cs
 +++ b/src/Clients/MainApp/FSpot/Preferences.cs
-@@ -190,7 +190,14 @@
+@@ -191,7 +191,14 @@
  			case SCREENSAVER_DELAY:
  				return 4.0;
  			case STORAGE_PATH:
