@@ -36,8 +36,9 @@ using System.Collections.Generic;
 using Gtk;
 
 using FSpot.Core;
+using FSpot.Database;
 using FSpot.Query;
-using FSpot.UI.Dialog;
+using FSpot.Settings;
 
 namespace FSpot.UI.Dialog
 {
@@ -56,7 +57,7 @@ namespace FSpot.UI.Dialog
 		{
 			this.query = query;
 			this.rollstore = rollstore;
-			rolls = rollstore.GetRolls (FSpot.Preferences.Get<int> (FSpot.Preferences.IMPORT_GUI_ROLL_HISTORY));
+			rolls = rollstore.GetRolls (Preferences.Get<int> (Preferences.IMPORT_GUI_ROLL_HISTORY));
 
 			TransientFor = parent;
 
@@ -96,7 +97,7 @@ namespace FSpot.UI.Dialog
 			UpdateNumberOfPhotos ();
 		}
 
-		private void UpdateNumberOfPhotos ()
+		void UpdateNumberOfPhotos ()
 		{
 			Roll [] selected_rolls = SelectedRolls ();
 			uint sum = 0;
@@ -107,14 +108,14 @@ namespace FSpot.UI.Dialog
 			photos_in_selected_rolls.Text = sum.ToString ();
 		}
 
-		private void PopulateCombos ()
+		void PopulateCombos ()
 		{
 			for (uint k = 0; k < rolls.Length; k++) {
 				uint numphotos = rollstore.PhotosInRoll (rolls [k]);
 				// Roll time is in UTC always
 				DateTime date = rolls [k].Time.ToLocalTime ();
 
-				string header = String.Format ("{0} ({1})",
+				string header = string.Format ("{0} ({1})",
 					date.ToString ("%dd %MMM, %HH:%mm"),
 					numphotos);
 
@@ -123,7 +124,7 @@ namespace FSpot.UI.Dialog
 			}
 		}
 
-		private Roll [] SelectedRolls ()
+		Roll [] SelectedRolls ()
 		{
 			if ((combo_roll_1.Active < 0) || ((combo_filter.Active == 2) && (combo_roll_2.Active < 0)))
 				return null;

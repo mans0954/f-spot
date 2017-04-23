@@ -47,10 +47,8 @@ namespace FSpot.Loaders
 	public class GdkImageLoader : Gdk.PixbufLoader, IImageLoader
 	{
 #region public api
-		public GdkImageLoader () : base ()
-		{
-		}
 
+		// FIXME: Probably really shouldn't be doing this?
 		~GdkImageLoader ()
 		{
 			if (!is_disposed) {
@@ -66,22 +64,16 @@ namespace FSpot.Loaders
 			//First, send a thumbnail if we have one
 			if ((thumb = App.Instance.Container.Resolve<IThumbnailService> ().TryLoadThumbnail (uri, ThumbnailSize.Large)) != null) {
 				pixbuf_orientation = ImageOrientation.TopLeft;
-				EventHandler<AreaPreparedEventArgs> prep = AreaPrepared;
-				if (prep != null) {
-					prep (this, new AreaPreparedEventArgs (true));
-				}
-				EventHandler<AreaUpdatedEventArgs> upd = AreaUpdated;
-				if (upd != null) {
-					upd (this, new AreaUpdatedEventArgs (new Rectangle (0, 0, thumb.Width, thumb.Height)));
-				}
+				AreaPrepared?.Invoke (this, new AreaPreparedEventArgs (true));
+				AreaUpdated?.Invoke (this, new AreaUpdatedEventArgs (new Rectangle (0, 0, thumb.Width, thumb.Height)));
 			}
 
-			using (var image_file = ImageFile.Create (uri)) {
+			using (var image_file = App.Instance.Container.Resolve<IImageFileFactory> ().Create (uri)) {
 				image_stream = image_file.PixbufStream ();
 				pixbuf_orientation = image_file.Orientation;
 			}
 
-			loading = true;
+			Loading = true;
 			// The ThreadPool.QueueUserWorkItem hack is there cause, as the bytes to read are present in the stream,
 			// the Read is CompletedAsynchronously, blocking the mainloop
 			image_stream.BeginRead (buffer, 0, count, delegate (IAsyncResult r) {
@@ -105,18 +97,11 @@ namespace FSpot.Loaders
 			}
 		}
 
-		bool loading = false;
+		public bool Loading { get; private set; } = false;
 
-		public bool Loading {
-			get { return loading; }
-		}
+		bool notify_prepared;
 
-		bool notify_prepared = false;
-		bool prepared = false;
-
-		public bool Prepared {
-			get { return prepared; }
-		}
+		public bool Prepared { get; private set; } = false;
 
 		ImageOrientation pixbuf_orientation = ImageOrientation.TopLeft;
 
@@ -124,7 +109,7 @@ namespace FSpot.Loaders
 			get { return pixbuf_orientation; }
 		}
 
-		bool is_disposed = false;
+		bool is_disposed;
 
 		public override void Dispose ()
 		{
@@ -162,7 +147,7 @@ namespace FSpot.Loaders
 			if (is_disposed)
 				return;
 
-			prepared = notify_prepared = true;
+			Prepared = notify_prepared = true;
 			damage = Rectangle.Zero;
 			base.OnAreaPrepared ();
 		}
@@ -182,10 +167,7 @@ namespace FSpot.Loaders
 			if (is_disposed)
 				return;
 
-			EventHandler eh = Completed;
-			if (eh != null) {
-				eh (this, EventArgs.Empty);
-			}
+			Completed?.Invoke (this, EventArgs.Empty);
 			Close ();
 		}
 #endregion
@@ -194,9 +176,9 @@ namespace FSpot.Loaders
 		System.IO.Stream image_stream;
 		const int count = 1 << 16;
 		byte[] buffer = new byte [count];
-		bool notify_completed = false;
+		bool notify_completed;
 		Rectangle damage;
-		object sync_handle = new object ();
+		readonly object sync_handle = new object ();
 
 		void HandleReadDone (IAsyncResult ar)
 		{
@@ -208,14 +190,14 @@ namespace FSpot.Loaders
 				if (byte_read == 0) {
 					image_stream.Close ();
 					Close ();
-					loading = false;
+					Loading = false;
 					notify_completed = true;
 				} else {
 					try {
 						if (!is_disposed && Write (buffer, (ulong)byte_read)) {
 							image_stream.BeginRead (buffer, 0, count, HandleReadDone, null);
 						}
-					} catch (System.ObjectDisposedException) {
+					} catch (ObjectDisposedException) {
 					} catch (GLib.GException) {
 					}
 				}
@@ -230,18 +212,12 @@ namespace FSpot.Loaders
 						thumb = null;
 					}
 
-					EventHandler<AreaPreparedEventArgs> eh = AreaPrepared;
-					if (eh != null) {
-						eh (this, new AreaPreparedEventArgs (false));
-					}
+					AreaPrepared?.Invoke (this, new AreaPreparedEventArgs (false));
 				}
 
 				//Send the AreaUpdated events
 				if (damage != Rectangle.Zero) {
-					EventHandler<AreaUpdatedEventArgs> eh = AreaUpdated;
-					if (eh != null) {
-						eh (this, new AreaUpdatedEventArgs (damage));
-					}
+					AreaUpdated?.Invoke (this, new AreaUpdatedEventArgs (damage));
 					damage = Rectangle.Zero;
 				}
 

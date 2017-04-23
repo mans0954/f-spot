@@ -36,12 +36,15 @@ using System;
 using FSpot.Core;
 using FSpot.Imaging;
 
-namespace FSpot {
+namespace FSpot
+{
 	[Obsolete ("nuke or rename this")]
-	public class PhotoLoader {
+	public class PhotoLoader
+	{
 		public PhotoQuery query;
 
-		public Gdk.Pixbuf Load (int index) {
+		public Gdk.Pixbuf Load (int index)
+		{
 			return Load (query, index);
 		}
 
@@ -53,7 +56,7 @@ namespace FSpot {
 
 		static public Gdk.Pixbuf Load (IPhoto item)
 		{
-			using (var img = ImageFile.Create (item.DefaultVersion.Uri)) {
+			using (var img = App.Instance.Container.Resolve<IImageFileFactory> ().Create (item.DefaultVersion.Uri)) {
 				Gdk.Pixbuf pixbuf = img.Load ();
 				return pixbuf;
 			}
@@ -61,7 +64,7 @@ namespace FSpot {
 
 		static public Gdk.Pixbuf LoadAtMaxSize (IPhoto item, int width, int height)
 		{
-			using (var img = ImageFile.Create (item.DefaultVersion.Uri)) {
+			using (var img = App.Instance.Container.Resolve<IImageFileFactory> ().Create (item.DefaultVersion.Uri)) {
 				Gdk.Pixbuf pixbuf = img.Load (width, height);
 				return pixbuf;
 			}

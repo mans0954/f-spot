@@ -30,7 +30,7 @@
 using System;
 using System.Collections.Generic;
 using FSpot.Import;
-using FSpot.UI.Dialog;
+using FSpot.Settings;
 using FSpot.Utils;
 using FSpot.Widgets;
 using Gtk;
@@ -42,10 +42,10 @@ namespace FSpot.UI.Dialog
 	public class ImportDialog : BuilderDialog
 	{
 		static readonly string select_folder_label = Catalog.GetString ("Choose Folder...");
-		ImportController Controller { get; set; }
+		ImportDialogController Controller { get; set; }
 		TreeStore Sources { get; set; }
 
-		static Dictionary<string, IImportSource> history_sources = new Dictionary<string, IImportSource> ();
+		static Dictionary<string, ImportSource> history_sources = new Dictionary<string, ImportSource> ();
 
 #pragma warning disable 169
 		[GtkBeans.Builder.Object] Button cancel_button;
@@ -68,7 +68,7 @@ namespace FSpot.UI.Dialog
 		PhotoImageView photo_view;
 		TagEntry tag_entry;
 
-		public ImportDialog (ImportController controller, Window parent) : base ("import.ui", "import_dialog")
+		public ImportDialog (ImportDialogController controller, Window parent) : base ("import.ui", "import_dialog")
 		{
 			Controller = controller;
 			BuildUI (parent);
@@ -110,7 +110,7 @@ namespace FSpot.UI.Dialog
 
 		void ResetPreview ()
 		{
-			photo_view.Pixbuf = GtkUtil.TryLoadIcon (FSpot.Core.Global.IconTheme, "f-spot", 128, (IconLookupFlags)0);
+			photo_view.Pixbuf = GtkUtil.TryLoadIcon (FSpot.Settings.Global.IconTheme, "f-spot", 128, 0);
 			photo_view.ZoomFit (false);
 		}
 
@@ -136,9 +136,9 @@ namespace FSpot.UI.Dialog
 		void ScanSources ()
 		{
 			// Populates the source combo box
-			Sources = new TreeStore (typeof(IImportSource), typeof(string), typeof(string), typeof(bool));
+			Sources = new TreeStore (typeof(ImportSource), typeof(string), typeof(string), typeof(bool));
 			sources_combo.Model = Sources;
-			sources_combo.RowSeparatorFunc = (m, i) => (m.GetValue (i, 1) as string) == String.Empty;
+			sources_combo.RowSeparatorFunc = (m, i) => (m.GetValue (i, 1) as string) == string.Empty;
 			var render = new CellRendererPixbuf ();
 			sources_combo.PackStart (render, false);
 			sources_combo.SetAttributes (render, "icon-name", 2, "sensitive", 3);
@@ -159,14 +159,14 @@ namespace FSpot.UI.Dialog
 			});
 		}
 
-		void PopulateSourceCombo (IImportSource sourceToActivate)
+		void PopulateSourceCombo (ImportSource sourceToActivate)
 		{
 			int activate_index = 0;
 			sources_combo.Changed -= OnSourceComboChanged;
 			Sources.Clear ();
-			Sources.AppendValues (null, Catalog.GetString ("Choose Import source..."), String.Empty, true);
+			Sources.AppendValues (null, Catalog.GetString ("Choose Import source..."), string.Empty, true);
 			Sources.AppendValues (null, select_folder_label, "folder", true);
-			Sources.AppendValues (null, String.Empty, String.Empty);
+			Sources.AppendValues (null, string.Empty, string.Empty);
 			bool mount_added = false;
 			foreach (var source in Controller.Sources) {
 				if (source == sourceToActivate) {
@@ -176,11 +176,11 @@ namespace FSpot.UI.Dialog
 				mount_added = true;
 			}
 			if (!mount_added) {
-				Sources.AppendValues (null, Catalog.GetString ("(No Cameras Detected)"), String.Empty, false);
+				Sources.AppendValues (null, Catalog.GetString ("(No Cameras Detected)"), string.Empty, false);
 			}
 
 			if (history_sources.Count > 0) {
-				Sources.AppendValues (null, String.Empty, String.Empty);
+				Sources.AppendValues (null, string.Empty, string.Empty);
 				foreach (var source in history_sources.Values) {
 					if (source == sourceToActivate) {
 						activate_index = Sources.IterNChildren ();
@@ -248,10 +248,10 @@ namespace FSpot.UI.Dialog
 
 		public void SwitchToFolderSource (SafeUri uri)
 		{
-			IImportSource source;
+			ImportSource source;
 			if (!history_sources.TryGetValue (uri, out source)) {
 				var name = uri.GetFilename ();
-				source = new FileImportSource (uri, name, "folder");
+				source = new ImportSource (uri, name, "folder");
 				history_sources[uri] = source;
 			}
 
@@ -271,7 +271,7 @@ namespace FSpot.UI.Dialog
 
 			TreeIter iter;
 			sources_combo.GetActiveIter (out iter);
-			var source = Sources.GetValue (iter, 0) as IImportSource;
+			var source = Sources.GetValue (iter, 0) as ImportSource;
 			if (source == null) {
 				var label = (string) Sources.GetValue (iter, 1);
 				if (label == select_folder_label) {
@@ -330,7 +330,7 @@ namespace FSpot.UI.Dialog
 		void OnControllerProgressUpdated (int current, int total)
 		{
 			var importing_label = Catalog.GetString ("Importing Photos: {0} of {1}...");
-			progress_bar.Text = String.Format (importing_label, current, total);
+			progress_bar.Text = string.Format (importing_label, current, total);
 			progress_bar.Fraction = (double) current / Math.Max (total, 1);
 		}
 
@@ -345,7 +345,6 @@ namespace FSpot.UI.Dialog
 		void CancelImport ()
 		{
 			Controller.CancelImport ();
-			Controller = null;
 			Destroy ();
 		}
 

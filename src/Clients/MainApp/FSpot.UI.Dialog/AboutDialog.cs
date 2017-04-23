@@ -29,18 +29,18 @@
 
 using System;
 using System.IO;
-
-using Mono.Unix;
-
+using FSpot.Settings;
 using Hyena;
+using Mono.Unix;
 
 namespace FSpot.UI.Dialog
 {
     public class AboutDialog : Gtk.AboutDialog
     {
-        private static AboutDialog about = null;
+        static AboutDialog about;
 
-        private AboutDialog () {
+        AboutDialog ()
+		{
             Artists = new string [] {
                     "Jakub Steiner",
                     "Matthew Paul Thomas",
@@ -50,7 +50,7 @@ namespace FSpot.UI.Dialog
                     "\tLawrence Ewing",
                     "\tStephane Delcroix",
                     "\tRuben Vermeersch",
-		    "\tStephen  Shaw",
+                    "\tStephen  Shaw",
                     "",
                     "Active Contributors to this release",
                     "\tAdemir Mendoza",
@@ -148,9 +148,9 @@ namespace FSpot.UI.Dialog
             Logo = new Gdk.Pixbuf (System.Reflection.Assembly.GetEntryAssembly (), "f-spot-128.png");
             ProgramName = "F-Spot";
             TranslatorCredits = Catalog.GetString ("translator-credits");
-            if (System.String.Compare (TranslatorCredits, "translator-credits") == 0)
+            if (string.Compare (TranslatorCredits, "translator-credits") == 0)
                 TranslatorCredits = null;
-            Version = FSpot.Core.Defines.VERSION;
+            Version = Defines.VERSION;
             Website = "http://f-spot.org";
             WebsiteLabel = Catalog.GetString ("F-Spot Website");
             WrapLicense = true;
@@ -160,9 +160,10 @@ namespace FSpot.UI.Dialog
         {
             if (about == null) {
                 about = new AboutDialog ();
-                about.Destroyed += delegate (object o, EventArgs e) {about = null;};
-                about.Response += delegate (object o, Gtk.ResponseArgs e) {if (about != null) about.Destroy ();};
+                about.Destroyed += (o, e) => { about = null; };
+                about.Response += (o, e) => { if (about != null) about.Destroy (); };
             }
+
             about.Show ();
         }
     }

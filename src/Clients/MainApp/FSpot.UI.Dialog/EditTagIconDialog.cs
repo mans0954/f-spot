@@ -39,6 +39,7 @@ using FSpot.Core;
 using FSpot.Database;
 using FSpot.Imaging;
 using FSpot.Query;
+using FSpot.Settings;
 using FSpot.Utils;
 using FSpot.Widgets;
 
@@ -53,7 +54,7 @@ namespace FSpot.UI.Dialog
 		PhotoImageView image_view;
 		Gtk.IconView icon_view;
 		ListStore icon_store;
-		string icon_name = String.Empty;
+		string icon_name = string.Empty;
 		Gtk.FileChooserButton external_photo_chooser;
 
 		[GtkBeans.Builder.Object] Gtk.Image preview_image;
@@ -67,7 +68,7 @@ namespace FSpot.UI.Dialog
 		public EditTagIconDialog (Db db, Tag t, Gtk.Window parent_window) : base ("EditTagIconDialog.ui", "edit_tag_icon_dialog")
 		{
 			TransientFor = parent_window;
-			Title = String.Format (Catalog.GetString ("Edit Icon for Tag {0}"), t.Name);
+			Title = string.Format (Catalog.GetString ("Edit Icon for Tag {0}"), t.Name);
 
 			preview_pixbuf = t.Icon;
 			Cms.Profile screen_profile;
@@ -110,7 +111,7 @@ namespace FSpot.UI.Dialog
 
 				image_view.Item.Index = 0;
 			} else {
-				from_photo_label.Markup = String.Format (Catalog.GetString (
+				from_photo_label.Markup = string.Format (Catalog.GetString (
 					"\n<b>From Photo</b>\n" +
 					" You can use one of your library photos as an icon for this tag.\n" +
 					" However, first you must have at least one photo associated\n" +
@@ -163,7 +164,7 @@ namespace FSpot.UI.Dialog
 			get { return icon_name; }
 			set {
 				icon_name = value;
-				PreviewPixbuf = GtkUtil.TryLoadIcon (FSpot.Core.Global.IconTheme, value, 48, (IconLookupFlags) 0);
+				PreviewPixbuf = GtkUtil.TryLoadIcon (FSpot.Settings.Global.IconTheme, value, 48, (IconLookupFlags) 0);
 			}
 
 		}
@@ -183,14 +184,14 @@ namespace FSpot.UI.Dialog
 		void CreateTagIconFromExternalPhoto ()
 		{
 			try {
-				using (var img = ImageFile.Create (new SafeUri(external_photo_chooser.Uri, true))) {
+				using (var img = App.Instance.Container.Resolve<IImageFileFactory> ().Create (new SafeUri(external_photo_chooser.Uri, true))) {
 					using (Gdk.Pixbuf external_image = img.Load ()) {
 						PreviewPixbuf = PixbufUtils.TagIconFromPixbuf (external_image);
 					}
 				}
 			} catch (Exception) {
 				string caption = Catalog.GetString ("Unable to load image");
-				string message = String.Format (Catalog.GetString ("Unable to load \"{0}\" as icon for the tag"),
+				string message = string.Format (Catalog.GetString ("Unable to load \"{0}\" as icon for the tag"),
 					                 external_photo_chooser.Uri);
 				HigMessageDialog md = new HigMessageDialog (this,
 									    DialogFlags.DestroyWithParent,
@@ -228,7 +229,7 @@ namespace FSpot.UI.Dialog
 		public void HandlePhotoChanged (object sender, EventArgs e)
 		{
 			int item = image_view.Item.Index;
-			photo_label.Text = String.Format (Catalog.GetString ("Photo {0} of {1}"),
+			photo_label.Text = string.Format (Catalog.GetString ("Photo {0} of {1}"),
 							  item + 1, query.Count);
 
 			photo_spin_button.Value = item + 1;
@@ -248,9 +249,9 @@ namespace FSpot.UI.Dialog
 		public bool FillIconView ()
 		{
 			icon_store.Clear ();
-			string [] icon_list = FSpot.Core.Global.IconTheme.ListIcons ("Emblems");
+			string [] icon_list = FSpot.Settings.Global.IconTheme.ListIcons ("Emblems");
 			foreach (string item_name in icon_list)
-				icon_store.AppendValues (item_name, GtkUtil.TryLoadIcon (FSpot.Core.Global.IconTheme, item_name, 32, (IconLookupFlags) 0));
+				icon_store.AppendValues (item_name, GtkUtil.TryLoadIcon (FSpot.Settings.Global.IconTheme, item_name, 32, (IconLookupFlags) 0));
 			return false;
 		}
 	}

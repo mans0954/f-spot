@@ -43,6 +43,8 @@ using System;
 using System.Collections.Generic;
 using FSpot.Bling;
 using FSpot.Core;
+using FSpot.Imaging;
+using FSpot.Settings;
 using FSpot.Thumbnail;
 using FSpot.Utils;
 using Gdk;
@@ -233,7 +235,7 @@ namespace FSpot.Widgets
 			this.selection.Collection.ItemsChanged += HandleCollectionItemsChanged;
 			SquaredThumbs = squaredThumbs;
 			thumb_cache = new DisposableCache<SafeUri, Pixbuf> (30);
-			ThumbnailLoader.Default.OnPixbufLoaded += HandlePixbufLoaded;
+			App.Instance.Container.Resolve<IThumbnailLoader> ().OnPixbufLoaded += HandlePixbufLoaded;
 
 			animation = new DoubleAnimation (0, 0, TimeSpan.FromSeconds (1.5), SetPositionCore, new CubicEase (EasingMode.EaseOut));
 		}
@@ -474,7 +476,7 @@ namespace FSpot.Widgets
 			QueueDraw ();
 		}
 
-		void HandlePixbufLoaded (ImageLoaderThread pl, ImageLoaderThread.RequestItem item) {
+		void HandlePixbufLoaded (IImageLoaderThread pl, RequestItem item) {
 			if (!thumb_cache.Contains (item.Uri)) {
 				return;
 			}
@@ -549,8 +551,8 @@ namespace FSpot.Widgets
 			if (current == null) {
 				var pixbuf = App.Instance.Container.Resolve<IThumbnailService> ().GetThumbnail (uri, ThumbnailSize.Large);
 				if (pixbuf == null) {
-					ThumbnailLoader.Default.Request (uri, ThumbnailSize.Large, 0);
-					current = FSpot.Core.Global.IconTheme.LoadIcon ("gtk-missing-image", ThumbSize, (IconLookupFlags)0);
+					App.Instance.Container.Resolve<IThumbnailLoader> ().Request (uri, ThumbnailSize.Large, 0);
+					current = FSpot.Settings.Global.IconTheme.LoadIcon ("gtk-missing-image", ThumbSize, (IconLookupFlags)0);
 				} else {
 					if (SquaredThumbs) {
 						current = PixbufUtils.IconFromPixbuf (pixbuf, ThumbSize);
@@ -611,7 +613,7 @@ namespace FSpot.Widgets
 				selection.Changed -= HandlePointerChanged;
 				selection.Collection.Changed -= HandleCollectionChanged;
 				selection.Collection.ItemsChanged -= HandleCollectionItemsChanged;
-				ThumbnailLoader.Default.OnPixbufLoaded -= HandlePixbufLoaded;
+				App.Instance.Container.Resolve<IThumbnailLoader> ().OnPixbufLoaded -= HandlePixbufLoaded;
 				if (background_pixbuf != null) {
 					background_pixbuf.Dispose ();
 					background_pixbuf = null;

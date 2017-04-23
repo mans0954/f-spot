@@ -10,7 +10,7 @@
     <RootNamespace>MainApp.UnitTest</RootNamespace>
     <AssemblyName>MainApp.UnitTest</AssemblyName>
     <ReleaseVersion>0.9.0</ReleaseVersion>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -44,18 +44,15 @@
     <Reference Include="Mono.Posix" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FSpot\TestOf_AndTerm.cs" />
+    <Compile Include="FSpot\AndTermTests.cs" />
     <Compile Include="FSpot\PhotoStoreTests.cs" />
     <Compile Include="FSpot\Mocks\PhotoMock.cs" />
-    <Compile Include="FSpot.Import\ImportControllerTests.cs" />
-    <Compile Include="FSpot.Import\Mocks\PhotoMock.cs" />
-    <Compile Include="FSpot.Import\Mocks\FileSystemMock.cs" />
-    <Compile Include="FSpot.Import\PhotoFileTrackerTests.cs" />
-    <Compile Include="FSpot.Import\FileImportSourceTests.cs" />
+    <Compile Include="FSpot.Widgets\FindBarTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="FSpot\" />
+    <Folder Include="FSpot.Widgets\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MainApp\MainApp.csproj">
@@ -85,6 +82,18 @@
     <ProjectReference Include="..\..\Core\FSpot.FileSystem\FSpot.FileSystem.csproj">
       <Project>{F7821E0B-6861-47D7-9FCE-F853CDF2F838}</Project>
       <Name>FSpot.FileSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\FSpot.Imaging\FSpot.Imaging.csproj">
+      <Project>{69C1F628-6CB4-4446-96AC-57810DD57594}</Project>
+      <Name>FSpot.Imaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\FSpot.Thumbnail\FSpot.Thumbnail.csproj">
+      <Project>{A1DEDA9C-E664-485E-AD65-6ABA83C58BC2}</Project>
+      <Name>FSpot.Thumbnail</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\FSpot.Database\FSpot.Database.csproj">
+      <Project>{16E9C7DC-54BD-4C93-9B2A-AE9CDCE1CEFD}</Project>
+      <Name>FSpot.Database</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

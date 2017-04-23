@@ -65,7 +65,7 @@ namespace FSpot.Exporters.PicasaWeb
 
 			if (show_captcha) {
 				try {
-					using  (var img = ImageFile.Create(new SafeUri(captcha_exception.CaptchaUrl, true))) {
+					using (var img = App.Instance.Container.Resolve<IImageFileFactory> ().Create (new SafeUri (captcha_exception.CaptchaUrl, true))) {
 						captcha_image.Pixbuf = img.Load();
 						token = captcha_exception.Token;
 					}
@@ -94,7 +94,7 @@ namespace FSpot.Exporters.PicasaWeb
 			password = password_entry.Text;
 			username = username_entry.Text;
 
-			add_button.Sensitive = !(password == String.Empty || username == String.Empty);
+			add_button.Sensitive = !(password == string.Empty || username == string.Empty);
 		}
 
 		[GLib.ConnectBefore]
