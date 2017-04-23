@@ -1,11 +1,17 @@
-f-spot (0.9.0~21-1) UNRELEASED; urgency=medium
+f-spot (0.9.0~22-1) UNRELEASED; urgency=medium
+
+  * Pull in latest commits from upstream 
+
+ -- Christopher Hoskin <mans0954@debian.org>  Sun, 23 Apr 2017 11:28:42 +0100
+
+f-spot (0.9.0~21-1) unstable; urgency=medium
 
   * Switch to building from upstream.
   * Switch to dpkg-source 3.0 (quilt) format
   * Refresh patches
   * Patch to set pre-release version
 
- -- Christopher Hoskin <christopher.hoskin@gmail.com>  Mon, 13 Jun 2016 20:19:40 +0100
+ -- Christopher Hoskin <mans0954@debian.org>  Sun, 23 Apr 2017 11:28:20 +0100
 
 f-spot (0.9.0~20-2) unstable; urgency=medium
 
