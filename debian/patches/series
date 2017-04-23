@@ -1,3 +1,4 @@
+remove-unit-tests-with-missing-dependencies.patch
 prerelease.patch
 autogen.patch
 link-libfspot-with-needed-libm.patch
