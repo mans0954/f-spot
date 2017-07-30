@@ -3,3 +3,4 @@ prerelease.patch
 autogen.patch
 link-libfspot-with-needed-libm.patch
 0004-Fix-build-error-with-recent_gtk-sharp.patch
+0006-Handle-gphoto2-mounts-that-give-an-exception-on-retr.patch
