@@ -1,11 +1,11 @@
-f-spot (0.9.0~23-1) UNRELEASED; urgency=medium
+f-spot (0.9.0~23-1) unstable; urgency=medium
 
   * Pull in latest commits from upstream 
   * Update patches 
   * Convert patches to gbp pq
   * Cherrypick 829fc9c57b5ba8a2a4649da28e6e350fd9c4da5b 
 
- -- Christopher Hoskin <mans0954@debian.org>  Sun, 30 Jul 2017 09:07:06 +0100
+ -- Christopher Hoskin <mans0954@debian.org>  Sun, 30 Jul 2017 10:36:14 +0100
 
 f-spot (0.9.0~22-1) unstable; urgency=medium
 
