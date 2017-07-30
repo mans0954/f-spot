@@ -19,6 +19,7 @@ libfspot_la_SOURCES =				\
 
 libfspot_la_LIBADD = 					\
 	-lX11						\
+	-lm						\
 	$(F_LIBS)					\
 	$(LCMS_LIBS)					\
 	$(GIO_LIBS)
