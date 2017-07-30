@@ -53,8 +53,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{9D75
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSpot", "src\Clients\FSpot\FSpot.csproj", "{27EC05FB-0223-4B26-8157-E49AF81D0007}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSpot.UnitTest", "src\Clients\FSpot.UnitTest\FSpot.UnitTest.csproj", "{A2A7E62B-8AE1-44F3-BB1B-B8E2DE7916C4}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", "{7D049DAA-F1B0-4697-9BCA-91FC0E1A2B9D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Editors", "Editors", "{416E19A2-9CD9-498F-BE75-20AB74535ACD}"
@@ -126,8 +124,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSpot.Thumbnail.UnitTest", "src\Core\FSpot.Thumbnail.UnitTest\FSpot.Thumbnail.UnitTest.csproj", "{8096C49A-EEBB-4413-A504-9CFB1B29719E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSpot.Database.UnitTest", "src\Core\FSpot.Database.UnitTest\FSpot.Database.UnitTest.csproj", "{FA804D04-4B6D-4977-A98D-E79CAF6DC47D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSpot.Import.UnitTest", "src\Core\FSpot.Import.UnitTest\FSpot.Import.UnitTest.csproj", "{FD841979-4D00-4AC2-8C7B-9C6D6691D9AB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External", "External", "{A6C38ABC-9B2B-4693-A16C-0741E5561B32}"
 EndProject
