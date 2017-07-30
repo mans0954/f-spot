@@ -1,6 +1,16 @@
+From: Debian CLI Applications Team <pkg-cli-apps-team@lists.alioth.debian.org>
+Date: Sun, 30 Jul 2017 09:51:37 +0100
+Subject: remove-unit-tests-with-missing-dependencies
+
+---
+ F-Spot.sln | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/F-Spot.sln b/F-Spot.sln
+index 2f53973..7081fec 100644
 --- a/F-Spot.sln
 +++ b/F-Spot.sln
-@@ -53,8 +53,6 @@
+@@ -53,8 +53,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{9D75
  EndProject
  Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSpot", "src\Clients\FSpot\FSpot.csproj", "{27EC05FB-0223-4B26-8157-E49AF81D0007}"
  EndProject
@@ -9,7 +19,7 @@
  Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", "{7D049DAA-F1B0-4697-9BCA-91FC0E1A2B9D}"
  EndProject
  Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Editors", "Editors", "{416E19A2-9CD9-498F-BE75-20AB74535ACD}"
-@@ -127,8 +125,6 @@
+@@ -127,8 +125,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSpot.Thumbnail.UnitTest",
  EndProject
  Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSpot.Database.UnitTest", "src\Core\FSpot.Database.UnitTest\FSpot.Database.UnitTest.csproj", "{FA804D04-4B6D-4977-A98D-E79CAF6DC47D}"
  EndProject

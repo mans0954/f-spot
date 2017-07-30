@@ -2,6 +2,7 @@ f-spot (0.9.0~23-1) UNRELEASED; urgency=medium
 
   * Pull in latest commits from upstream 
   * Update patches 
+  * Convert patches to gbp pq
 
  -- Christopher Hoskin <mans0954@debian.org>  Sun, 30 Jul 2017 09:07:06 +0100
 

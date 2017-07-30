@@ -1,8 +1,17 @@
-from upstream git
+From: Debian CLI Applications Team <pkg-cli-apps-team@lists.alioth.debian.org>
+Date: Sun, 30 Jul 2017 09:51:37 +0100
+Subject: Fix-build-error-with-recent_gtk-sharp
 
+from upstream git
+---
+ src/Clients/FSpot/FSpot/GroupSelector.cs | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Clients/FSpot/FSpot/GroupSelector.cs b/src/Clients/FSpot/FSpot/GroupSelector.cs
+index cd56723..937b021 100644
 --- a/src/Clients/FSpot/FSpot/GroupSelector.cs
 +++ b/src/Clients/FSpot/FSpot/GroupSelector.cs
-@@ -469,7 +469,7 @@
+@@ -469,7 +469,7 @@ namespace FSpot
  				bounds.Height = selector.background.Height;
  				bounds.Y = selector.background.Y;
  				bounds.X = selector.BoxX (item);

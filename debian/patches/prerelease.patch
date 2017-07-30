@@ -1,6 +1,16 @@
+From: Debian CLI Applications Team <pkg-cli-apps-team@lists.alioth.debian.org>
+Date: Sun, 30 Jul 2017 09:51:37 +0100
+Subject: prerelease
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 12613a2..e7cd087 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -5,7 +5,7 @@
+@@ -5,7 +5,7 @@ m4_define([fspot_version_minor], [9])
  m4_define([fspot_version_micro], [0])
  
  dnl set to 0 when doing an official release

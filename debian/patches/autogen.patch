@@ -1,6 +1,16 @@
+From: Debian CLI Applications Team <pkg-cli-apps-team@lists.alioth.debian.org>
+Date: Sun, 30 Jul 2017 09:51:37 +0100
+Subject: autogen
+
+---
+ autogen.sh | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/autogen.sh b/autogen.sh
+index 611154f..b367ecb 100755
 --- a/autogen.sh
 +++ b/autogen.sh
-@@ -61,8 +61,6 @@
+@@ -61,8 +61,6 @@ check_autotool_version $LIBTOOLIZE 1.4.3
  check_autotool_version intltoolize 0.35.0
  check_autotool_version pkg-config 0.14.0
  
