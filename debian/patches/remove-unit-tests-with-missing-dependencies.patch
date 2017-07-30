@@ -2,9 +2,9 @@
 +++ b/F-Spot.sln
 @@ -53,8 +53,6 @@
  EndProject
- Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainApp", "src\Clients\MainApp\MainApp.csproj", "{27EC05FB-0223-4B26-8157-E49AF81D0007}"
+ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSpot", "src\Clients\FSpot\FSpot.csproj", "{27EC05FB-0223-4B26-8157-E49AF81D0007}"
  EndProject
--Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainApp.UnitTest", "src\Clients\MainApp.UnitTest\MainApp.UnitTest.csproj", "{A2A7E62B-8AE1-44F3-BB1B-B8E2DE7916C4}"
+-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSpot.UnitTest", "src\Clients\FSpot.UnitTest\FSpot.UnitTest.csproj", "{A2A7E62B-8AE1-44F3-BB1B-B8E2DE7916C4}"
 -EndProject
  Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", "{7D049DAA-F1B0-4697-9BCA-91FC0E1A2B9D}"
  EndProject

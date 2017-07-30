@@ -1,7 +1,7 @@
 from upstream git
 
---- a/src/Clients/MainApp/FSpot/GroupSelector.cs
-+++ b/src/Clients/MainApp/FSpot/GroupSelector.cs
+--- a/src/Clients/FSpot/FSpot/GroupSelector.cs
++++ b/src/Clients/FSpot/FSpot/GroupSelector.cs
 @@ -469,7 +469,7 @@
  				bounds.Height = selector.background.Height;
  				bounds.Y = selector.background.Y;
