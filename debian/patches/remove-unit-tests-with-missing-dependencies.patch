@@ -1,4 +1,5 @@
-From: Debian CLI Applications Team <pkg-cli-apps-team@lists.alioth.debian.org>
+From: Debian CLI Applications Team
+ <pkg-cli-apps-team@lists.alioth.debian.org>
 Date: Sun, 30 Jul 2017 09:51:37 +0100
 Subject: remove-unit-tests-with-missing-dependencies
 
