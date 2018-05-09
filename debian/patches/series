@@ -4,3 +4,4 @@ autogen.patch
 link-libfspot-with-needed-libm.patch
 0004-Fix-build-error-with-recent_gtk-sharp.patch
 0006-Revert-Use-csc-instead-of-mcs.patch
+0007-Revert-Merge-pull-request-123-from-mono-use_msbuild.patch
