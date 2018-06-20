@@ -1,0 +1,12 @@
+--- a/src/Core/FSpot.Database/JobStore.cs
++++ b/src/Core/FSpot.Database/JobStore.cs
+@@ -71,7 +71,8 @@
+ 					RunAt = runAt,
+ 					Persistent = true
+ 				});
+-				childContainer.TryResolve<Job> (type, out var job);
++				Job job;
++				childContainer.TryResolve<Job> (type, out job);
+ 				if (job == null) {
+ 					Log.Error ($"Unknown job type {type} ignored.");
+ 				}

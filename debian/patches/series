@@ -1,3 +1,5 @@
+taglib-sharp-TargetFrameworkVersion.patch
+declaration-expression.patch
 remove-unit-tests-with-missing-dependencies.patch
 prerelease.patch
 autogen.patch
