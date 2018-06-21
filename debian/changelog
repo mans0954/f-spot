@@ -3,6 +3,9 @@ f-spot (0.9.0~24-1) UNRELEASED; urgency=medium
   * Pull in latest commits from upstream 
   * Reverse Mono version bump
   * Switch back to xbuild
+  * Patch taglib-sharp to target framework 4.5
+  * Remove unsupported C# language features
+  * Remove dependency_libs field from libfspot.la
 
  -- Christopher Hoskin <mans0954@debian.org>  Tue, 08 May 2018 22:17:56 +0100
 

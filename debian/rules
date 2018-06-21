@@ -15,6 +15,7 @@ override_dh_auto_configure:
 
 override_dh_auto_install:
 	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 dh_auto_install
+	sed -i "/dependency_libs/ s/'.*'/''/" "$(CURDIR)/debian/f-spot/usr/lib/x86_64-linux-gnu/f-spot/libfspot.la"
 
 #override_dh_install:
 #	rm -f $(CURDIR)/debian/f-spot/usr/lib/f-spot/*.a \
