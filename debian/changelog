@@ -1,3 +1,9 @@
+f-spot (0.9.0~25-1) bionic; urgency=medium
+
+  * Make dependency_libs removal arch independent
+
+ -- Christopher Hoskin <mans0954@csh-Precision-5520.home>  Fri, 22 Jun 2018 13:51:08 +0100
+
 f-spot (0.9.0~24-1) bionic; urgency=medium
 
   * Pull in latest commits from upstream 
