@@ -1,4 +1,4 @@
-f-spot (0.9.0~24-1) UNRELEASED; urgency=medium
+f-spot (0.9.0~24-1) bionic; urgency=medium
 
   * Pull in latest commits from upstream 
   * Reverse Mono version bump
@@ -7,7 +7,7 @@ f-spot (0.9.0~24-1) UNRELEASED; urgency=medium
   * Remove unsupported C# language features
   * Remove dependency_libs field from libfspot.la
 
- -- Christopher Hoskin <mans0954@debian.org>  Tue, 08 May 2018 22:17:56 +0100
+ -- Christopher Hoskin <mans0954@csh-Precision-5520.home>  Fri, 22 Jun 2018 07:51:12 +0100
 
 f-spot (0.9.0~23-1) unstable; urgency=medium
 
