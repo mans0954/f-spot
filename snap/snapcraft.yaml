@@ -1,0 +1,90 @@
+name: f-spot
+version: 0.8-2018-11-24
+summary: F-Spot Photo Manager
+description: |
+  F-Spot is a full-featured personal photo management application for the
+  GNOME desktop. It simplifies digital photography by providing intuitive
+  tools to help you share, touch-up, find and organize your images.
+  It allows for importing of your existing photo collections, tagging photos
+  with identifiers, as well as doing simple edits of photos (e.g. rotating).
+
+grade: devel
+confinement: strict
+
+apps:
+  f-spot:
+    command: sh $SNAP/usr/bin/mono-wrapper $SNAP/usr/bin/mono $SNAP/lib/f-spot/f-spot.exe
+
+parts:
+  mono:
+    plugin: nil
+    override-pull: |
+      apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+      echo "deb http://download.mono-project.com/repo/ubuntu stable-xenial main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
+      apt update
+      apt install -y mono-devel nuget
+    build-packages:
+      - apt-transport-https
+  f-spot:
+    stage-packages:
+      - dash
+      - mono-runtime
+      - libgtk2.0-0
+      - libx11-6
+      - gconf2
+      - libcairo2
+      - libdbus2.0-cil 
+      - libgconf2.0-cil 
+      - libgdk-pixbuf2.0-0
+      - libglib2.0-0
+      - libglib2.0-cil 
+      - libgnome-keyring1.0-cil
+      - libgnome2.24-cil 
+      - libgtk2.0-cil 
+      - liblcms2-2
+      - libmono-addins-gui0.2-cil 
+      - libmono-addins0.2-cil 
+      - libmono-cairo4.0-cil
+      - libmono-corlib4.5-cil
+      - libmono-posix4.0-cil
+      - libmono-sharpzip4.84-cil 
+      - libmono-system-configuration4.0-cil
+      - libmono-system-core4.0-cil 
+      - libmono-system-drawing4.0-cil 
+      - libmono-system-numerics4.0-cil 
+      - libmono-system-web4.0-cil
+      - libmono-system-xml4.0-cil 
+      - libmono-system4.0-cil 
+      - libpango-1.0-0 
+      - libpangocairo-1.0-0 
+      - libsqlite3-0
+      - libunique-1.0-0 
+      - libxcomposite1 
+      - dbus
+      - gvfs-bin
+    build-packages:
+      - libgtk2.0-dev
+      - intltool
+      - libgconf2-dev 
+      - libgtk2.0-cil-dev
+      - libdbus-glib2.0-cil-dev
+      - libgconf2.0-cil-dev
+      - gnome-icon-theme
+      - gtk-sharp2-gapi
+      - libgnome2.0-cil-dev
+      - libjpeg-dev
+      - liblcms2-dev
+      - libunique-dev
+      - libgnome-vfs2.0-cil-dev
+      - libgnome-keyring1.0-cil-dev
+      - libgnomeui-dev
+      - gnome-doc-utils
+    plugin: autotools
+    configflags: ["--enable-tests"]
+    after:
+      - mono
+  wrapper:
+    plugin: dump
+    source: .
+    organize:
+      mono-wrapper: usr/bin/mono-wrapper
