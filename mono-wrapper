@@ -13,4 +13,6 @@ export MONO_CFG_DIR=$PKG_DIR/etc
 export MONO_REGISTRY_PATH=~/.mono/registry
 export MONO_GAC_PREFIX=$PKG_DIR/lib/mono/gac/
 
+export LD_LIBRARY_PATH=$PKG_DIR/lib/hello/:$LD_LIBRARY_PATH
+
 exec "$@"
