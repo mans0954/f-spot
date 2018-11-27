@@ -14,6 +14,10 @@ confinement: strict
 apps:
   f-spot:
     command: sh $SNAP/usr/bin/mono-wrapper $SNAP/usr/bin/mono $SNAP/lib/f-spot/f-spot.exe
+  list:
+    command: ls -l $SNAP/usr/lib/mono/
+  reg:
+    command: sh $SNAP/usr/bin/mono-wrapper $SNAP/usr/bin/mono $SNAP/usr/lib/mono/4.5/gacutil.exe -i $SNAP/usr/lib/cli/glib-sharp-2.0/glib-sharp.dll
 
 parts:
   mono:
@@ -83,6 +87,9 @@ parts:
     configflags: ["--enable-tests"]
     after:
       - mono
+    override-prime: |
+      snapcraftctl prime
+      ./usr/bin/mono ./usr/lib/mono/4.5/gacutil.exe -i ./usr/lib/cli/glib-sharp-2.0/glib-sharp.dll
   wrapper:
     plugin: dump
     source: .
