@@ -85,23 +85,27 @@ parts:
     override-prime: |
       snapcraftctl prime
 
-      ln -sf ../../usr/lib/cli/atk-sharp-2.0/atk-sharp.dll lib/f-spot/atk-sharp.dll
-      ln -sf ../../usr/lib/cli/atk-sharp-2.0/libatksharpglue-2.so lib/f-spot/libatksharpglue-2.so
+      find usr/lib/cli/ -name "*.dll" -exec ln -sf  ../../{} lib/f-spot/ \;
+      find usr/lib/cli/ -name "*.so" -exec ln -sf  ../../{} lib/f-spot/ \;
+      find usr/lib/cli/ -name "*.dll.config" -exec sh -c 'sed "s|/usr/lib/cli/[^/]*/||" {} > lib/f-spot/$(basename {})'  \;
 
-      ln -sf ../../usr/lib/cli/gdk-sharp-2.0/gdk-sharp.dll lib/f-spot/gdk-sharp.dll
-      ln -sf ../../usr/lib/cli/gdk-sharp-2.0/libgdksharpglue-2.so lib/f-spot/libgdksharpglue-2.so
+      #ln -sf ../../usr/lib/cli/atk-sharp-2.0/atk-sharp.dll lib/f-spot/atk-sharp.dll
+      #ln -sf ../../usr/lib/cli/atk-sharp-2.0/libatksharpglue-2.so lib/f-spot/libatksharpglue-2.so
 
-      ln -sf ../../usr/lib/cli/glib-sharp-2.0/glib-sharp.dll lib/f-spot/glib-sharp.dll
-      ln -sf ../../usr/lib/cli/glib-sharp-2.0/libglibsharpglue-2.so lib/f-spot/libglibsharpglue-2.so
+      #ln -sf ../../usr/lib/cli/gdk-sharp-2.0/gdk-sharp.dll lib/f-spot/gdk-sharp.dll
+      #ln -sf ../../usr/lib/cli/gdk-sharp-2.0/libgdksharpglue-2.so lib/f-spot/libgdksharpglue-2.so
 
-      ln -sf ../../usr/lib/cli/gtk-dotnet-2.0/gtk-dotnet.dll lib/f-spot/gtk-dotnet.dll
+      #ln -sf ../../usr/lib/cli/glib-sharp-2.0/glib-sharp.dll lib/f-spot/glib-sharp.dll
+      #ln -sf ../../usr/lib/cli/glib-sharp-2.0/libglibsharpglue-2.so lib/f-spot/libglibsharpglue-2.so
+
+      #ln -sf ../../usr/lib/cli/gtk-dotnet-2.0/gtk-dotnet.dll lib/f-spot/gtk-dotnet.dll
 
 
-      ln -sf ../../usr/lib/cli/gtk-sharp-2.0/gtk-sharp.dll lib/f-spot/gtk-sharp.dll
-      ln -sf ../../usr/lib/cli/gtk-sharp-2.0/libgtksharpglue-2.so lib/f-spot/libgtksharpglue-2.so
+      #ln -sf ../../usr/lib/cli/gtk-sharp-2.0/gtk-sharp.dll lib/f-spot/gtk-sharp.dll
+      #ln -sf ../../usr/lib/cli/gtk-sharp-2.0/libgtksharpglue-2.so lib/f-spot/libgtksharpglue-2.so
 
-      ln -sf ../../usr/lib/cli/pango-sharp-2.0/pango-sharp.dll lib/f-spot/pango-sharp.dll
-      ln -sf ../../usr/lib/cli/pango-sharp-2.0/libpangosharpglue-2.so lib/f-spot/libpangosharpglue-2.so
+      #ln -sf ../../usr/lib/cli/pango-sharp-2.0/pango-sharp.dll lib/f-spot/pango-sharp.dll
+      #ln -sf ../../usr/lib/cli/pango-sharp-2.0/libpangosharpglue-2.so lib/f-spot/libpangosharpglue-2.so
 #      ./usr/bin/mono ./usr/lib/mono/4.5/gacutil.exe -i ./usr/lib/cli/glib-sharp-2.0/glib-sharp.dll
 #      sed 's|/usr/lib/cli/glib-sharp-2.0/|/snap/f-spot/x1//usr/lib/cli/glib-sharp-2.0/|g' $SNAP/usr/lib/cli/gtk-sharp-2.0/gtk-sharp.dll.conf
 #      ./usr/bin/mono ./usr/lib/mono/4.5/gacutil.exe -i ./usr/lib/cli/gtk-sharp-2.0/gtk-sharp.dll
