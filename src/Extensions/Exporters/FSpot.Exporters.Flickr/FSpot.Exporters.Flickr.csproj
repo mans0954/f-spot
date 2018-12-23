@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{13D4FF63-5D83-42D7-AE4C-56BB512D5D89}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>FSpot.Exporters.Flickr</RootNamespace>
     <AssemblyName>FSpot.Exporters.Flickr</AssemblyName>
-    <ReleaseVersion>0.9.0</ReleaseVersion>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>$(FSpotTargetFramework)</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -61,6 +59,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="FlickrNet" Version="3.25.0" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\..\Clients\FSpot\FSpot.csproj">
       <Project>{27EC05FB-0223-4B26-8157-E49AF81D0007}</Project>
       <Name>FSpot</Name>
@@ -89,10 +90,6 @@
     <ProjectReference Include="..\..\..\..\lib\gtk-sharp-beans\gtk-sharp-beans.csproj">
       <Project>{069D1797-427D-4CED-A754-233DE64FC5DD}</Project>
       <Name>gtk-sharp-beans</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\external\flickrnet\FlickrNet\FlickrNet.csproj">
-      <Project>{5F017126-C1FF-4996-85CC-6150E80C6AFC}</Project>
-      <Name>FlickrNet</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Core\FSpot.Gui\FSpot.Gui.csproj">
       <Project>{05A7FEC4-974A-40EB-AFB8-14E523EEEFFB}</Project>
