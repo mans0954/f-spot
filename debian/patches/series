@@ -2,7 +2,7 @@
 #declaration-expression.patch
 #remove-unit-tests-with-missing-dependencies.patch
 #prerelease.patch
-#autogen.patch
+autogen.patch
 #link-libfspot-with-needed-libm.patch
 #0004-Fix-build-error-with-recent_gtk-sharp.patch
 #0006-Revert-Use-csc-instead-of-mcs.patch
