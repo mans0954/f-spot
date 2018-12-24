@@ -6,6 +6,7 @@ VERSION = $(shell dpkg-parsechangelog | grep ^Vers | cut -d\  -f2)
 UPVERSION = $(shell echo $(VERSION) | sed 's,-.*,,' | sed 's,+dfsg.*,,') 
 
 override_dh_auto_configure:
+	nuget restore
 	dh_auto_configure -- \
 		--disable-scrollkeeper \
 		--with-gnome-screensaver=/usr \
@@ -14,7 +15,6 @@ override_dh_auto_configure:
 		--with-vendor-build-id=$(shell dpkg-vendor --query vendor)
 
 override_dh_auto_build:
-	nuget restore
 	msbuild
 
 override_dh_auto_install:
@@ -41,8 +41,8 @@ override_dh_auto_install:
 #	done 
 #endif
 
-# disable tests
-override_dh_auto_test:
+## disable tests
+##override_dh_auto_test:
 
 # libs aren't ours to ship
 override_dh_makeclilibs:
