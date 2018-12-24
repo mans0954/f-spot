@@ -10,7 +10,7 @@ RUN echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" 
 RUN apt update
 RUN apt install -y mono-devel
 RUN apt install pkg-config
-RUN apt install  -y cli-common-dev libgtk2.0-dev libgtk2.0-cil-dev gtk-sharp2-gapi libgnome2-dev libcairo2-dev libmono-addins-cil-dev libmono-addins-gui-cil-dev libdbus2.0-cil-dev libdbus-glib2.0-cil-dev libgnome2.0-cil-dev libgconf2.0-cil-dev libgnome-vfs2.0-cil-dev  libgnome-keyring1.0-cil-dev liblcms2-dev libgnomeui-dev libexif-dev libjpeg-dev libunique-dev intltool gnome-doc-utils gnome-icon-theme libgtk-sharp-beans2.0-cil-dev libgio2.0-cil-dev libmono-posix4.0-cil nunit adwaita-icon-theme
+RUN apt install  -y cli-common-dev libgtk2.0-dev libgtk2.0-cil-dev gtk-sharp2-gapi libgnome2-dev libcairo2-dev libmono-addins-cil-dev libmono-addins-gui-cil-dev libdbus2.0-cil-dev libdbus-glib2.0-cil-dev libgnome2.0-cil-dev libgconf2.0-cil-dev libgnome-vfs2.0-cil-dev  libgnome-keyring1.0-cil-dev liblcms2-dev libgnomeui-dev libexif-dev libjpeg-dev libunique-dev intltool gnome-icon-theme libgtk-sharp-beans2.0-cil-dev libgio2.0-cil-dev libmono-posix4.0-cil nunit adwaita-icon-theme
 RUN DEBIAN_FRONTEND=noninteractive apt install -y git-buildpackage nuget
 RUN apt install -y quilt  dh-autoreconf
 
