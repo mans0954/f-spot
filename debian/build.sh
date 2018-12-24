@@ -4,4 +4,4 @@ cd /src/f-spot
 git submodule foreach git clean -x -f -d
 git submodule update
 nuget restore
-gbp buildpackage --git-debian-branch=ubuntu/bionic --git-upstream-tree=master --git-submodules --git-export-dir=~/build/ --git-verbose
+gbp buildpackage --git-debian-branch=ubuntu/bionic --git-upstream-tree=master --git-submodules --git-export-dir=~/build/ --git-verbose -us -uc
