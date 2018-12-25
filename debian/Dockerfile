@@ -14,7 +14,7 @@ RUN apt install  -y cli-common-dev libgtk2.0-dev libgtk2.0-cil-dev gtk-sharp2-ga
 RUN DEBIAN_FRONTEND=noninteractive apt install -y git-buildpackage nuget
 RUN apt install -y quilt  dh-autoreconf
 
-RUN useradd -u1000 mans0954
+RUN useradd -s /bin/bash -u1000 -m mans0954
 USER mans0954
 
 CMD /src/f-spot/debian/build.sh
