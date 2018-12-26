@@ -6,4 +6,4 @@ rm ../f-spot_$UPSTREAM_VERSION.orig.tar.gz
 git submodule foreach git clean -x -f -d
 git submodule update
 nuget restore
-gbp buildpackage --git-debian-branch=ubuntu/bionic --git-upstream-tree=master --git-submodules --git-export-dir=../ --git-verbose -us -uc
+gbp buildpackage --git-debian-branch=ubuntu/bionic --git-upstream-tree=csh-master --git-submodules --git-export-dir=../ --git-verbose -us -uc
