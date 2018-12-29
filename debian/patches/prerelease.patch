@@ -16,7 +16,7 @@ index f09dab6..30abaa3 100644
  
  dnl set to 0 when doing an official release
 -m4_define([fspot_version_pre_release], [0])
-+m4_define([fspot_version_pre_release], [25])
++m4_define([fspot_version_pre_release], [26])
  
  m4_define([concat], $1$2$3$4)
  

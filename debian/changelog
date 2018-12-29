@@ -1,3 +1,9 @@
+f-spot (0.9.0~26-1) bionic; urgency=medium
+
+  * Use mono-devel > 5 to build 
+
+ -- Christopher Hoskin <mans0954@debian.org>  Sat, 29 Dec 2018 09:46:07 +0000
+
 f-spot (0.9.0~25-1) bionic; urgency=medium
 
   * Make dependency_libs removal arch independent

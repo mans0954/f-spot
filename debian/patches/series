@@ -1,7 +1,7 @@
 #taglib-sharp-TargetFrameworkVersion.patch
 #declaration-expression.patch
 #remove-unit-tests-with-missing-dependencies.patch
-#prerelease.patch
+prerelease.patch
 autogen.patch
 #link-libfspot-with-needed-libm.patch
 #0004-Fix-build-error-with-recent_gtk-sharp.patch
