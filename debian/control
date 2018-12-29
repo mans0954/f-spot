@@ -6,7 +6,7 @@ Uploaders: Mirco Bauer <meebey@debian.org>, Iain Lane <laney@debian.org>
 Build-Depends: debhelper (>= 9),
  cli-common-dev (>= 0.8.0),
  quilt (>= 0.46-7~),
- mono-devel (>= 2.4.3),
+ mono-devel (>= 5.18.0.225),
  libgtk2.0-dev (>= 2.14),
  libgtk2.0-cil-dev (>= 2.12.2),
  gtk-sharp2-gapi,
@@ -43,7 +43,10 @@ Vcs-Browser: http://git.debian.org/?p=pkg-cli-apps/packages/f-spot.git
 
 Package: f-spot
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, ${cli:Depends}, dbus, gvfs-bin
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${cli:Depends},
+  dbus,
+  gvfs-bin,
+  libcanberra-gtk-module
 Recommends: dcraw, dbus-x11
 Description: personal photo management application
  F-Spot is a full-featured personal photo management application for the
