@@ -13,9 +13,6 @@ override_dh_auto_configure:
 		--with-gnome-screensaver-themesdir=/usr/share/applications/screensavers \
 		--with-vendor-build-id=$(shell dpkg-vendor --query vendor)
 
-override_dh_auto_build:
-	msbuild
-
 override_dh_auto_install:
 	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 dh_auto_install
 	sed -i "/dependency_libs/ s/'.*'/''/" `find . -name 'libfspot.la'`
