@@ -8,7 +8,7 @@ Subject: prerelease
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/configure.ac b/configure.ac
-index cd5ce96..8a541e1 100644
+index cd5ce96..370417d 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -5,7 +5,7 @@ m4_define([fspot_version_minor], [9])
@@ -16,7 +16,7 @@ index cd5ce96..8a541e1 100644
  
  dnl set to 0 when doing an official release
 -m4_define([fspot_version_pre_release], [0])
-+m4_define([fspot_version_pre_release], [26])
++m4_define([fspot_version_pre_release], [27])
  
  m4_define([concat], $1$2$3$4)
  
