@@ -1,0 +1,34 @@
+From: Christopher Hoskin <mans0954@debian.org>
+Date: Sun, 14 Apr 2019 17:30:52 +0100
+Subject: Use mono-csc instead of csc
+
+---
+ build/m4/shamrock/mono.m4 | 2 +-
+ configure.ac              | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/build/m4/shamrock/mono.m4 b/build/m4/shamrock/mono.m4
+index b361a07..3ecde46 100644
+--- a/build/m4/shamrock/mono.m4
++++ b/build/m4/shamrock/mono.m4
+@@ -1,6 +1,6 @@
+ AC_DEFUN([SHAMROCK_FIND_MONO_4_0_COMPILER],
+ [
+-	SHAMROCK_FIND_PROGRAM_OR_BAIL(MCS, csc)
++	SHAMROCK_FIND_PROGRAM_OR_BAIL(MCS, mono-csc)
+ ])
+ 
+ AC_DEFUN([SHAMROCK_FIND_MONO_RUNTIME],
+diff --git a/configure.ac b/configure.ac
+index 370417d..e0de089 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -92,7 +92,7 @@ FSPOT_ENABLE_TESTS
+ dnl --- Check for mono and csc
+ 
+ AC_PATH_PROG(MONO, mono)
+-AC_PATH_PROG(MCS, csc)
++AC_PATH_PROG(MCS, mono-csc)
+ 
+ CS="C#"
+ if test ! -x "$MCS"; then
