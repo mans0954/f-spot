@@ -1,0 +1,10 @@
+--- a/build/xbuild.include
++++ b/build/xbuild.include
+@@ -1,5 +1,5 @@
+-XBUILD=msbuild
+-XBUILD_ARGS=/restore /verbosity:normal /nologo /property:CodePage=65001
++XBUILD=xbuild
++XBUILD_ARGS=/verbosity:normal /nologo /property:CodePage=65001
+ ALL_CSPROJ=$(wildcard *.csproj)
+ MAIN_SLN=$(top_builddir)/F-Spot.sln
+ 

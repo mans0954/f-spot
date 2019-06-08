@@ -1,3 +1,4 @@
+xbuild.patch
 autogen.patch
 prerelease.patch
 0003-Use-mono-csc-instead-of-csc.patch
