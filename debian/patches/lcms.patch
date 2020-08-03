@@ -1,0 +1,14 @@
+--- a/src/Clients/FSpot/FSpot/ColorManagement.cs
++++ b/src/Clients/FSpot/FSpot/ColorManagement.cs
+@@ -65,9 +65,9 @@
+ 			if (!profiles.ContainsKey (p.ProductDescription))
+ 				profiles.Add (p.ProductDescription, p);
+ 
+-			p = Profile.CreateAlternateRgb ();
++			/*p = Profile.CreateAlternateRgb ();
+ 			if (!profiles.ContainsKey (p.ProductDescription))
+-				profiles.Add (p.ProductDescription, p);
++				profiles.Add (p.ProductDescription, p);*/
+ 
+ 			foreach (var path in search_dir)
+ 				if (!profiles.ContainsKey (path))

@@ -1,3 +1,9 @@
+f-spot (0.9.0~25-3) focal; urgency=medium
+
+  * Patch to disable Alternate RGB profile
+
+ -- Christopher Hoskin <mans0954@debian.org>  Mon, 03 Aug 2020 18:29:09 +0100
+
 f-spot (0.9.0~25-1) bionic; urgency=medium
 
   * Make dependency_libs removal arch independent
