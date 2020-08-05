@@ -1,3 +1,9 @@
+f-spot (0.9.0~25-4) groovy; urgency=medium
+
+  * Release for Groovy
+
+ -- Christopher Hoskin <mans0954@debian.org>  Wed, 05 Aug 2020 10:56:32 +0100
+
 f-spot (0.9.0~25-3) focal; urgency=medium
 
   * Patch to disable Alternate RGB profile
