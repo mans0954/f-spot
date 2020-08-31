@@ -1,3 +1,9 @@
+f-spot (0.9.0~25-4) UNRELEASED; urgency=medium
+
+  * Patch to fudge key conflicts
+
+ -- Christopher Hoskin <mans0954@debian.org>  Mon, 31 Aug 2020 16:30:47 +0100
+
 f-spot (0.9.0~25-3) focal; urgency=medium
 
   * Patch to disable Alternate RGB profile
