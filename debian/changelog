@@ -1,4 +1,4 @@
-f-spot (0.9.0~25-4) UNRELEASED; urgency=medium
+f-spot (0.9.0~25-5) focal; urgency=medium
 
   * Patch to fudge key conflicts
 
