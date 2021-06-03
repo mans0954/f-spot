@@ -1,3 +1,9 @@
+f-spot (0.9.0~25-7) hirsute; urgency=medium
+
+  * Drop dependency on gvfs-bin
+
+ -- Christopher Hoskin <mans0954@debian.org>  Thu, 03 Jun 2021 19:53:25 +0100
+
 f-spot (0.9.0~25-6) hirsute; urgency=medium
 
   * Release for Hirsute

@@ -44,7 +44,7 @@ Vcs-Browser: http://git.debian.org/?p=pkg-cli-apps/packages/f-spot.git
 
 Package: f-spot
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, ${cli:Depends}, dbus, gvfs-bin
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${cli:Depends}, dbus
 Recommends: dcraw, dbus-x11
 Description: personal photo management application
  F-Spot is a full-featured personal photo management application for the
